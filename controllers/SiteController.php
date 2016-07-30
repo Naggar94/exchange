@@ -11,6 +11,11 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    public function beforeAction($action)
+    {
+        return true;
+    }
+
     public function behaviors()
     {
         return [
@@ -49,7 +54,16 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->renderPartial('index');
+    }
+
+    public function actionSignUp(){
+        if(isset($_POST['Signup'])){
+            var_dump($_POST['Signup']);
+        }
+        else{
+            echo 'Jerk';
+        }
     }
 
     public function actionLogin()
